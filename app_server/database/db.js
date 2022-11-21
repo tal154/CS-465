@@ -57,4 +57,4 @@ process.on('SIGTERM', () => {
 
 connect();
 
-require('./database/models/travlr');
+require('./models/travlr');
