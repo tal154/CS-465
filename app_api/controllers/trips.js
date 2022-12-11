@@ -8,7 +8,7 @@ const getUser = (req, res, callback) => {
     console.log(req.payload);
     console.log(req.auth.email);
     
-    if (req.body && req.auth.email) {       
+    if (req.payload && req.payload.email) {       
       User
         .findOne({ email : req.auth.email })    
         .exec((err, user) => {
