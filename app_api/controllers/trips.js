@@ -3,16 +3,14 @@ const Model = mongoose.model('trips');
 const User = mongoose.model('users');
 
 const getUser = (req, res, callback) => {
-    //const email = User.req.body.email;
     console.log('getUser');
     console.log(req.body);
-    console.log(req);
-    req.header('email');
-    //console.log(req.payload.email);
+    console.log(req.payload);
+    console.log(req.auth.email);
     
-    if (req.payload && req.payload.email) {       
+    if (req.body && req.auth.email) {       
       User
-        .findOne({ email : req.payload.email })    
+        .findOne({ email : req.auth.email })    
         .exec((err, user) => {
           if (!user) {
             return res
@@ -76,6 +74,7 @@ const tripsFindCode = async (req, res) => {
 };
 
 const tripsAddTrip = async (req, res) => {
+    console.log(req);
     getUser(req, res,
         (req, res) => {
             Model
